@@ -1,5 +1,4 @@
 import sys
-from contextlib import redirect_stdout
 
 with open('genedata.0.txt', 'w', encoding='utf-8') as f:
     sys.stdout = f
@@ -52,6 +51,7 @@ with open('genedata.0.txt', 'w', encoding='utf-8') as f:
                 difference_count += 1
 
         return difference_count
+
 
 
 
