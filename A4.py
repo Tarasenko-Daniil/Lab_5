@@ -18,5 +18,17 @@ with open('genedata.0.txt', 'w', encoding='utf-8') as f:
                 count = 1
         c = ''.join(code)
         return c
+  protein = []
+    creature = []
+    chains = []
+
+    with open("sequences.0.txt", "r", encoding="utf-8") as file:
+        for line in file:
+            parts = line.strip().split("\t")
+            protein.append(parts[0])
+            creature.append(parts[1])
+            chains.append(parts[2])
+
+    proteins_chains = dict(zip(protein, chains))
 
 
