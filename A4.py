@@ -1,18 +1,22 @@
-def rle(string):
-    code = []
-    count = 1
-    for i in range(1, len(string)+1):
-        if i < len(string) and string[i] == string[i-1]:
-            count += 1
-        else:
-            if count <= 2:
-                code.append(string[i-1] * count)
+import sys
+from contextlib import redirect_stdout
+
+with open('genedata.0.txt', 'w', encoding='utf-8') as f:
+    sys.stdout = f
+
+    def rle(string):
+        code = []
+        count = 1
+        for i in range(1, len(string)+1):
+            if i < len(string) and string[i] == string[i-1]:
+                count += 1
             else:
-                code.append(str(count) + string[i-1])
-            count = 1
-    return ''.join(code)
+                if count <= 2:
+                    code.append(string[i-1] * count)
+                else:
+                    code.append(str(count) + string[i-1])
+                count = 1
+        c = ''.join(code)
+        return c
 
-
-gene = 'AAAAAAAATATTTCGCTTTTCAAAAATTGTCAGATGAGAGAAAAAATAAAA'
-print(rle(gene))
 
