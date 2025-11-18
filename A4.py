@@ -37,6 +37,21 @@ with open('genedata.0.txt', 'w', encoding='utf-8') as f:
             return True
         else:
             return False
+            
+    def diff(first_chain, second_chain):
+        decoded_first = rle(first_chain)
+        decoded_second = rle(second_chain)
+
+        difference_count = abs(len(decoded_first) - len(decoded_second))
+
+        max_len = max(len(decoded_first), len(decoded_second))
+        for i in range(max_len):
+            char_first = decoded_first[i] if i < len(decoded_first) else None
+            char_second = decoded_second[i] if i < len(decoded_second) else None
+            if char_first != char_second:
+                difference_count += 1
+
+        return difference_count
 
 
 
