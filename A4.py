@@ -31,4 +31,12 @@ with open('genedata.0.txt', 'w', encoding='utf-8') as f:
 
     proteins_chains = dict(zip(protein, chains))
 
+    def search(seq, encoded_seq):
+        decoded = rle(encoded_seq)
+        if seq in decoded:
+            return True
+        else:
+            return False
+
+
 
