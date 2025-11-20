@@ -67,6 +67,46 @@ with open('genedata.0.txt', 'w', encoding='utf-8') as f:
                 max_count = count
 
         print(max_char, "\t\t\t", max_count)
+        
+         with open("commands.0.txt", "r") as file:
+        print("-" * 60)
+        count_command = 0
+        for line in file:
+            command = line.strip().split("\t")
+
+            if not command:
+                continue
+
+            type = command[0]
+            count_command += 1
+
+            if type == "search":
+                dec = rle(command[1])
+                print(f"{count_command:03d}\tsearch\t{dec}")
+                print(f"{'organism':<12}    {'protein':>15}")
+
+                found = False
+                for i in range(len(protein)):
+                    if search(dec, chains[i]):
+                        print(f"{creature[i]:<12}    {protein[i]:<25}")
+                        found = True
+
+                if not found:
+                    print("NOT FOUND")
+                print("-" * 60)
+
+            elif type == "diff":
+                print(f"{count_command:03d}\tdiff\t{command[1]}\t{command[2]}")
+                print("amino-acids difference:")
+                print(diff(proteins_chains[command[1]], proteins_chains[command[2]]))
+                print("-" * 60)
+
+            elif type == "mode":
+                print(f"{count_command:03d}\tmode\t{command[1]}")
+                print("amino-acids occurs:")
+                mode(proteins_chains[command[1]])
+                print("-" * 60)
+
 
 
 
