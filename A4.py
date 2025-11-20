@@ -43,7 +43,7 @@ with open('genedata.0.txt', 'w', encoding='utf-8') as f:
 
         difference_count = abs(len(decoded_first) - len(decoded_second))
 
-        max_len = max(len(decoded_first), len(decoded_second))
+        max_len = min(len(decoded_first), len(decoded_second))
         for i in range(max_len):
             char_first = decoded_first[i] if i < len(decoded_first) else None
             char_second = decoded_second[i] if i < len(decoded_second) else None
@@ -106,6 +106,7 @@ with open('genedata.0.txt', 'w', encoding='utf-8') as f:
                 print("amino-acids occurs:")
                 mode(proteins_chains[command[1]])
                 print("-" * 60)
+
 
 
 
